@@ -2,12 +2,12 @@
 
 import unittest
 def updatebits(n,m,i,j):
-    left = (1 << j+1)
-    right = (1 << i)
-    mask = ~(left - right)
-    n = n & mask
-    m = m << i
-    return (n | m)
+    left = (1 << j+1) # create a left mask with 1 at j+1th position
+    right = (1 << i) # create a right mask with 1 at ith position
+    mask = ~(left - right) # subtract left from right to get 1's at positions j through i and negate it to get 0s
+    n = n & mask # clear bits in n using the mask
+    m = m << i # shift m i bits
+    return (n | m) # sub'ing bits in n with corresponding ones in positions j through i in m
     
 class Mytest(unittest.TestCase):
     def test(self):
